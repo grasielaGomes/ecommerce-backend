@@ -15,8 +15,10 @@ export class Coupon {
     this.percentage = this.validatePercentage(percentage);
   }
 
-  applyCoupon(total: number): number {
-    return (total * this.percentage) / 100;
+  applyCoupon(total: number) {
+    if (!this.expiration || this.expiration >= new Date())
+      return (total * this.percentage) / 100;
+    throw new Error("expired coupon");
   }
 
   private validateDate(value: Date | string | number) {
