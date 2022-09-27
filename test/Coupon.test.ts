@@ -4,10 +4,30 @@ describe("Coupon tests", () => {
   it("should apply discount if receives a valid coupon and total", () => {
     const newCoupon = {
       couponId: "VALE20",
+      expiration: "2023-01-01",
       percentage: 20
     };
     const coupon = new Coupon(newCoupon);
     expect(coupon.applyCoupon(5000)).toBeDefined;
+  });
+
+  it("should apply discount if receives a valid coupon withou expiration and total", () => {
+    const newCoupon = {
+      couponId: "VALE20",
+      percentage: 20
+    };
+    const coupon = new Coupon(newCoupon);
+    expect(coupon.applyCoupon(5000)).toBeDefined;
+  });
+
+  it("should not apply discount if receives an expired coupon", () => {
+    const newCoupon = {
+      couponId: "VALE20",
+      expiration: "2021-01-01",
+      percentage: 20
+    };
+    const coupon = new Coupon(newCoupon);
+    expect(() => coupon.applyCoupon(5000)).toThrow(new Error("expired coupon"));
   });
 
   it("should throw an error if receives an invalid id", () => {
@@ -23,7 +43,9 @@ describe("Coupon tests", () => {
       couponId: "VALE50",
       percentage: -1
     };
-    expect(() => new Coupon(newCoupon)).toThrow(new Error("invalid percentage"));
+    expect(() => new Coupon(newCoupon)).toThrow(
+      new Error("invalid percentage")
+    );
   });
 
   it("should throw an error if receives an invalid date", () => {
