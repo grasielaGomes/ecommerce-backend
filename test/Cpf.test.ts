@@ -1,4 +1,4 @@
-import { CadastroPessoaFisica } from "../src/utils/Cpf";
+import { CadastroPessoaFisica } from "../src/entities/Cpf";
 
 describe("CPF tests", () => {
   it("should return true if it receives a valid CPF", () => {
