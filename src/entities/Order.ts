@@ -1,4 +1,4 @@
-import { CadastroPessoaFisica } from "../utils/Cpf";
+import { CadastroPessoaFisica } from "./Cpf";
 import { ItemI } from "./Item";
 import { OrderItem } from "./OrderItem";
 import { Coupon } from "./Coupon";
@@ -13,12 +13,21 @@ export class Order {
     this.orderItems = [];
     this.total = 0;
   }
-  private setTotal() {
-    return this.orderItems.reduce<number>(
-      (total, orderItem) => orderItem.getTotal() + total,
-      0
-    );
+
+  addItem({ _id, price }: ItemI, quantity: number) {
+    if (quantity <= 0)
+      throw new Error("The quantity needs to be equal or greater than 1");
+
+    if (this.hasItemInOrder(_id)) {
+      this.increaseQuantity(_id);
+      return this.orderItems;
+    }
+
+    const newOrderItem = { itemId: _id, price, quantity };
+    this.orderItems.push(new OrderItem(newOrderItem));
+    return this.orderItems;
   }
+
   applyDiscount(coupon: Coupon): number {
     this.total = this.setTotal();
     const discount = coupon.applyCoupon(this.total);
@@ -26,10 +35,23 @@ export class Order {
     return discount;
   }
 
-  addItem(item: ItemI, quantity: number) {
-    const newOrderItem = { itemId: item._id, price: item.price, quantity };
+  private hasItemInOrder(id: string): boolean {
+    return Boolean(this.orderItems.find((item) => item.itemId === id));
+  }
 
-    this.orderItems.push(new OrderItem(newOrderItem));
-    return this.orderItems;
+  private increaseQuantity(id: string) {
+    const item = this.orderItems.find(
+      (item) => item.itemId === id
+    ) as OrderItem;
+    item.quantity += 1;
+    const otherItems = this.orderItems.filter((item) => item.itemId !== id);
+    this.orderItems = [item, ...otherItems];
+  }
+
+  private setTotal() {
+    return this.orderItems.reduce<number>(
+      (total, orderItem) => orderItem.getTotal() + total,
+      0
+    );
   }
 }
