@@ -7,7 +7,7 @@ export interface OrderItemI {
 export class OrderItem {
   readonly itemId: string;
   readonly price: number;
-  readonly quantity: number;
+  quantity: number;
   
   constructor({ itemId, price, quantity }: OrderItemI) {
     this.itemId = itemId;
