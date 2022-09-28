@@ -1,12 +1,14 @@
+type ExpirationTypes = Date | string | number
+
 export interface CouponI {
   couponId: string;
-  expiration?: Date | string | number;
+  expiration?: ExpirationTypes;
   percentage: number;
 }
 
 export class Coupon {
   readonly couponId: string;
-  readonly expiration?: Date | string | number;
+  readonly expiration?: ExpirationTypes;
   readonly percentage: number;
 
   constructor({ couponId, expiration, percentage }: CouponI) {
