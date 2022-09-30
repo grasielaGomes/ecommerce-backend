@@ -1,4 +1,4 @@
-import { Item } from "../src/entities/Item";
+import { Item } from "../src/domain/Item";
 
 describe("Item tests", () => {
   const guitar = {

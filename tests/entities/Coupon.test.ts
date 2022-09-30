@@ -1,4 +1,4 @@
-import { Coupon } from "../src/entities/Coupon";
+import { Coupon } from "../../src/entities/Coupon";
 
 describe("Coupon tests", () => {
   it("should apply discount if receives a valid coupon and total", () => {

@@ -1,5 +1,5 @@
-import { Coupon } from "../src/entities/Coupon";
-import { Order } from "../src/entities/Order";
+import { Coupon } from "../src/domain/Coupon";
+import { Order } from "../src/domain/Order";
 
 describe("Creating orders", () => {
   const product1 = {
