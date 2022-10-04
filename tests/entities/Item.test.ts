@@ -1,4 +1,4 @@
-import { Item } from "../src/domain/Item";
+import { Item } from "../../src";
 
 describe("Item tests", () => {
   const guitar = {

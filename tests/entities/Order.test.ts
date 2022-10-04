@@ -1,5 +1,4 @@
-import { Coupon } from "../src/domain/Coupon";
-import { Order } from "../src/domain/Order";
+import { Coupon, Order } from "../../src";
 
 describe("Creating orders", () => {
   const product1 = {

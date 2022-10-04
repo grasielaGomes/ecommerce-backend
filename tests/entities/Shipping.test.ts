@@ -1,4 +1,4 @@
-import { Shipping } from "../src/domain/Shipping";
+import { Shipping } from "../../src";
 
 describe("Shipping tests", () => {
   it("should calculate shipping based on distancy and item dimensions", () => {
