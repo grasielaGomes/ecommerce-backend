@@ -29,10 +29,17 @@ export class Order {
   }
 
   applyDiscount(coupon: Coupon): number {
-    this.total = this.setTotal();
+    this.total = this.getTotal();
     const discount = coupon.applyCoupon(this.total);
     this.total -= discount;
     return discount;
+  }
+
+  getTotal(): number {
+    return this.orderItems.reduce<number>(
+      (total, orderItem) => orderItem.getTotal() + total,
+      0
+    );
   }
 
   private hasItemInOrder(id: string): boolean {
@@ -46,12 +53,5 @@ export class Order {
     item.quantity += 1;
     const otherItems = this.orderItems.filter((item) => item.itemId !== id);
     this.orderItems = [item, ...otherItems];
-  }
-
-  private setTotal() {
-    return this.orderItems.reduce<number>(
-      (total, orderItem) => orderItem.getTotal() + total,
-      0
-    );
   }
 }
