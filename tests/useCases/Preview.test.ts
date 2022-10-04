@@ -49,6 +49,6 @@ describe("Preview tests", () => {
       ]
     };
     const total = await preview.execute(input);
-    expect(total).toStrictEqual({ total: 6090 });
+    expect(total).toBe(6090);
   });
 });
