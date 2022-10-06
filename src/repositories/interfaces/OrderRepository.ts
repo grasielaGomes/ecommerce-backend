@@ -1,5 +1,7 @@
 import { Order } from "../../";
 
 export default interface OrderRepository {
-  save(order: Order): Promise<void>
+  getByCPF(cpf: string): Promise<Order[] | null>;
+  getByNumber(orderNumber: string): Promise<Order | null>;
+  save(order: Order): Promise<void>;
 }
