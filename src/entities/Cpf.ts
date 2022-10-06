@@ -1,5 +1,5 @@
 export class CadastroPessoaFisica {
-  private cpf: string;
+  cpf: string;
 
   constructor(input: string) {
     this.cpf = input.replace(/[^\d]+/g, "");
