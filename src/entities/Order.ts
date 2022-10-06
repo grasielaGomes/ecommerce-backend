@@ -6,11 +6,13 @@ import { Coupon } from "./Coupon";
 export class Order {
   document: CadastroPessoaFisica;
   orderItems: OrderItem[];
+  orderNumber: string | null;
   total: number;
 
   constructor(cpf: string) {
     this.document = new CadastroPessoaFisica(cpf);
     this.orderItems = [];
+    this.orderNumber = null;
     this.total = 0;
   }
 
