@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import HttpServer from "./HttpServer";
 
 export default class ExpressAdapter implements HttpServer {
@@ -10,7 +10,7 @@ export default class ExpressAdapter implements HttpServer {
   }
 
   on(method: string, url: string, callback: Function): void {
-    this.app[method](url, async function (req: any, res: any) {
+    this.app[method](url, async function (req: Request, res: Response) {
       const output = await callback(req.params, req.body);
       res.json(output);
     });
