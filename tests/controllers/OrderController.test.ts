@@ -10,7 +10,7 @@ describe("OrderController tests", () => {
         { idItem: "3", quantity: 3 }
       ]
     };
-    const response = await axios.post("http://localhost:3000/preview", input);
+    const response = await axios.post("http://localhost:3001/preview", input);
     const { total } = response.data;
     expect(total).toBe(6090);
   });
