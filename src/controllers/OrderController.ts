@@ -8,7 +8,7 @@ export default class OrderController {
     readonly httpServer: HttpServer,
     readonly preview: Preview,
     readonly checkout: Checkout,
-    readonly getOrderByCpf: GetOrdersByCPF
+    readonly getOrdersByCpf: GetOrdersByCPF
   ) {
     httpServer.on("post", "/preview", async function (params: any, body: any) {
       const total = await preview.execute(body);
@@ -23,7 +23,7 @@ export default class OrderController {
       "get",
       "/orders/:cpf",
       async function (params: any, body: any) {
-        const orders = await getOrderByCpf.execute(params.cpf);
+        const orders = await getOrdersByCpf.execute(params.cpf);
         return orders;
       }
     );
