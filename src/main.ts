@@ -48,4 +48,4 @@ const checkout = new Checkout(itemRepository, orderRepository);
 const getOrderByCpf = new GetOrdersByCPF(orderRepository);
 const httpServer = new ExpressAdapter();
 new OrderController(httpServer, preview, checkout, getOrderByCpf);
-httpServer.listen(3000);
+httpServer.listen(3001);
