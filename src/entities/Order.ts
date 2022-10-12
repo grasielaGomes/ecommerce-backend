@@ -34,7 +34,7 @@ export class Order {
     this.total = this.getTotal();
     const discount = coupon.applyCoupon(this.total);
     this.total -= discount;
-    return discount;
+    return this.total;
   }
 
   getTotal(): number {
