@@ -25,9 +25,9 @@ export default class OrderRepositoryMemory implements OrderRepository {
   }
   async save(order: Order): Promise<void> {
     const orderWithNumber = this.addOrderNumber(order);
-    await this.orders.push(orderWithNumber);
+    this.orders.push(orderWithNumber);
   }
-  
+
   private addOrderNumber(order: Order): Order {
     const orderWithNumber = order;
     this.counter++;
