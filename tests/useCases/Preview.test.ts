@@ -1,7 +1,7 @@
 import Preview from "../../src/useCases/Preview";
 import { Item } from "../../src/entities/Item";
 import ItemRepositoryMemory from "../../src/repositories/memory/ItemRepositoryMemory";
-import CouponRepositoryMemory from "../../src/repositories/memory/CoupontRepositoryMemory";
+import CouponRepositoryMemory from "../../src/repositories/memory/CouponRepositoryMemory";
 import { CouponI } from "../../src/entities/Coupon";
 
 describe("Preview tests", () => {
