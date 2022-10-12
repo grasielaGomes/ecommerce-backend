@@ -72,14 +72,13 @@ describe("Creating orders", () => {
     ]);
   });
 
-  it("should create an order and apply a discount coupom", () => {
+  it("should create an order and apply a discount coupon", () => {
     const cpf = "259.556.978-37";
     const newOrder = new Order(cpf);
     const coupon = { couponId: "VALE25", percentage: 25 };
     newOrder.addItem(product1, 1);
     newOrder.addItem(product2, 1);
     newOrder.addItem(product3, 2);
-    expect(newOrder.applyDiscount(new Coupon(coupon))).toBe(1000);
-    expect(newOrder.total).toBe(3000);
+    expect(newOrder.applyDiscount(new Coupon(coupon))).toBe(3000);
   });
 });
